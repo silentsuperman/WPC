@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCA Faculty and Student Information</title>
+<style>
+  table {
+    border:1px solid black;
+    width: 100%;
+  }
+thead{
+background-color:aqua;
+}
+
+</style>
+</head>
+<body>
+
+<h2>Faculty Information</h2>
+
+<table id="facultyTable">
+  <thead>
+    <tr>
+      <th>SlNo</th>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Specialization</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<h2>Student Information</h2>
+
+<table id="studentTable">
+  <thead>
+    <tr>
+      <th>SlNo</th>
+      <th>Name</th>
+      <th>Roll No</th>
+      <th>Marks</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<script>
+  var facultyData = {
+    "faculty": [
+      {
+        "Slno":"1",
+        "name": "Dr Dharani",
+        "designation": "HOD",
+        "specialization":"Web Technology",
+      },
+      {
+        "Slno":"2",
+        "name": "Dr. Mohan Aradhya",
+        "designation": "Assistant Professor",
+        "specialization": "Computer Network",
+      },
+      {
+        "Slno":"3",
+        "name": "Dr. Prashanth",
+        "designation": "Assitant Professor",
+        "specialization": "Java",
+      },
+      {
+        "Slno":"4",
+        "name": "Preethi",
+        "designation": "Assistant Professor",
+        "specialization": "Cloud Computing",
+      }
+    ]
+  };
+
+  var studentData = {
+    "students": [
+      {
+        "Slno":"1",
+        "name": "Rajesh",
+        "rollno": "1",
+        "marks": "90",
+      },
+      {
+        "Slno":"2",
+        "name": "Ramesh",
+        "rollno": "2",
+        "marks": "80",
+      },
+      // add more students as needed
+    ]
+  };
+
+  var facultyTable = document.getElementById('facultyTable').getElementsByTagName('tbody')[0];
+  for (var i = 0; i < facultyData.faculty.length; i++) {
+    var faculty = facultyData.faculty[i];
+    var row = facultyTable.insertRow(i);
+    row.insertCell(0).innerHTML = faculty.Slno;
+    row.insertCell(1).innerHTML = faculty.name;
+    row.insertCell(2).innerHTML = faculty.designation;
+    row.insertCell(3).innerHTML = faculty.specialization;
+    
+  }
+
+  var studentTable = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+  for (var i = 0; i < studentData.students.length; i++) {
+    var student = studentData.students[i];
+    var row = studentTable.insertRow(i);
+    row.insertCell(0).innerHTML = student.Slno;
+    row.insertCell(1).innerHTML = student.name;
+    row.insertCell(2).innerHTML = student.rollno;
+    row.insertCell(3).innerHTML = student.marks;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head><meta charset="utf-8">
+<title>student xml</title>
+<link ref="shortcut" href="#">
+
+<style>
+table{
+border:1;
+
+}
+input{
+background-color:blue;
+color:white;
+}
+</style>
+</head>
+<body><h1>People's details</h1><br>
+<input type="button" onclick="studentData()" value="getdata">
+<br>
+<br>
+<table id="demo" border=1 solid black>
+<thead>
+<tr>
+<th>name</th>
+<th>Email</th>
+<th>address</th>
+<th>phone</th>
+</tr>
+</thead>
+<tbody>     </tbody>
+</table>
+<script>
+function studentData(){
+    var bro = new XMLHttpRequest();
+    bro.onreadystatechange=function(){
+        if(this.readyState == 4 && this.status == 200){
+            myfunction(this);
+        }
+    };
+
+    bro.open('GET', "contacts.xml", true);
+    bro.send();
+};
+
+function myfunction(xml){
+    let i = 0;
+    let doc = xml.responseXML;
+    let x = doc.getElementsByTagName('person');
+    let table = "<tr><th>Name</th><th>Email</th><th>Address</th><th>Phone</th></tr>";
+    for(let i = 0; i < x.length; i++){
+        table += "<tr><td>" +
+        x[i].getElementsByTagName('name')[0].childNodes[0].nodeValue + "</td><td>" +
+        x[i].getElementsByTagName('email')[0].childNodes[0].nodeValue + "</td><td>" +
+        x[i].getElementsByTagName('address')[0].childNodes[0].nodeValue + "</td><td>" +
+        x[i].getElementsByTagName('phone')[0].childNodes[0].nodeValue + "</td></tr>";
+    }
+
+    document.getElementById("demo").innerHTML = table;
+}
+</script>
+</body>
+</html>
